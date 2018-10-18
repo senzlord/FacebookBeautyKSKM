@@ -11,3 +11,5 @@ Feature :
 
 -Reset To Default Facebook
 
+Still Crash Sometimes dunno why :(
+
