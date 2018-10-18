@@ -43,6 +43,7 @@ function resetColorBox(){
 			{code: 	'document.body.style.backgroundColor = "";'+
 					reset});
 	});
+	colorBoxBackground.value = '';
 	localStorage["BackgroundColor"] = '';
 }
 
@@ -123,23 +124,14 @@ function resetBlueBarBox(){
 			tabs[0].id,
 			{code: 	reset});
 	});
+	blueBarBoxBackground.value = '';
 	localStorage["BarColor"] = '';
 }
 
-
-
 function resetClearAll(){
-	var reset = 'document.body.style.backgroundColor = "";'+
-				'document.body.style.backgroundImage = "";'+
-				'document.getElementById("bluebarRoot").firstChild.style.backgroundColor = "";'+
-				'document.getElementById("bluebarRoot").firstChild.style.border = "";'+
-				'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
-				'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "";';
-	chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
-		chrome.tabs.executeScript(
-			tabs[0].id,
-			{code: 	reset});
-	});
+	resetColorBox();
+	resetImageBox();
+	resetBlueBarBox();
 	localStorage.clear();
 }
 
@@ -151,5 +143,6 @@ $( document ).ready(function() {
 	$("#ResetColor").click(resetColorBox);
 	$("#ResetImage").click(resetImageBox);
 	$("#ResetFbBar").click(resetBlueBarBox);
+	$("#ResetAll").click(resetClearAll);
 	$("input[name=optradio][value=" + localStorage["Setting"] + "]").prop('checked', true);
 });
