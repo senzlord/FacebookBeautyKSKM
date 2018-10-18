@@ -22,6 +22,7 @@ colorBoxBackground.onchange = function(){
 		chrome.tabs.executeScript(
 			tabs[0].id,
 			{code: 	'document.body.style.backgroundColor = "' + localStorage["BackgroundColor"] + '";'+
+					'if(document.getElementById("content")!=null)document.getElementById("content").firstChild.firstChild.style.backgroundColor = "transparent";'+
 					'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "transparent";'+
 					'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "transparent";'});
 	});
@@ -30,7 +31,8 @@ colorBoxBackground.onchange = function(){
 function resetColorBox(){
 	var reset;
 	if(localStorage["BackgroundImage"] == null || localStorage["BackgroundImage"] == ''){
-		reset = 'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
+		reset = 'if(document.getElementById("content")!=null)document.getElementById("content").firstChild.firstChild.style.backgroundColor = "";'+
+				'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
 				'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "";';
 	} else {
 		reset = '';
@@ -59,6 +61,7 @@ imageBoxBackground.onchange = function(){
 			chrome.tabs.executeScript(
 				tabs[0].id,
 				{code:  'document.body.style.backgroundImage = "url(' + fr.result + ')";'+ 
+						'if(document.getElementById("content")!=null)document.getElementById("content").firstChild.firstChild.style.backgroundColor = "transparent";'+
 						'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "transparent";'+
 						'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "transparent";'+
 						setting});
@@ -69,7 +72,8 @@ imageBoxBackground.onchange = function(){
 }
 
 function resetImageBox(){
-	var reset = 'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
+	var reset = 'if(document.getElementById("content")!=null)document.getElementById("content").firstChild.firstChild.style.backgroundColor = "";'+
+				'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
 				'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "";';
 	chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
 		chrome.tabs.executeScript(
