@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="CSS/bootstrap.min.css" >
+	<link rel="stylesheet" href="CSS/bootstrap-colorpicker.min.css" >
+	<title>Facebook Beauty</title>
+</head>
+<body>
+	<div class="container" style="width: 350px">
+		<div style="height: 350px; overflow-y:scroll;">
+			<div class="form-group">
+				<label for="colorBoxBackground"><strong>Background Color</strong></label>
+				<input  type="text" class="form-control" id="colorBoxBackground" value="" placeholder="#000000" />
+				<small id="labelBGcolor" class="form-text text-muted">It won't work if use Background Image repeat</small>
+			
+				<label for="imageBoxBackground"><strong>Background Image</strong></label>
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="imageBoxBackground" accept="image/png, image/jpeg">
+					<label class="custom-file-label" id="textImageBoxBackground" for="imageBoxBackground">Choose file</label>
+					<small id="labelBGcolor" class="form-text text-muted">Please Image size shouldnot be more than 3MB</small>
+				</div>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" name="optradio" id="RadioCenter" value="CenterNo">
+					<label class="form-check-label" for="RadioCenter">Center No Without Repeat</label>
+				</div>
+				<div class="form-check">
+					<input type="radio" class="form-check-input" name="optradio" id="RadioCenterTop" value="CenterWith">
+					<label class="form-check-label" for="RadioCenterTop">Center Top With Repeat</label>
+				</div>
+				<HR>
+				<label for="blueBarBoxBackground">FacebookBar Color</label>
+				<input  type="text" class="form-control" id="blueBarBoxBackground" value="" placeholder="#000000" />
+				<small id="labelBGcolor" class="form-text text-muted">Facebook Bar Color</small>
+				<HR>
+				<label for="ResetColor">Reset Box</label>
+				<div class="input-group">
+					<div class="btn-group">
+						<button type="button" class="btn btn-dark" id="ResetColor">BgColor</button>
+						<button type="button" class="btn btn-dark" id="ResetImage">BgImage</button>
+						<button type="button" class="btn btn-dark" id="ResetFbBar">FbBar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="JS/jquery-slim.min.js" ></script>
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/bootstrap-colorpicker.min.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
