@@ -9,7 +9,7 @@
 		"http://*.facebook.com/*",
 	    "https://*.facebook.com/*"
 	],
-	"version" : "0.3",
+	"version" : "0.4",
 	"background":{
 		"scripts": ["background.js"],
 		"persistent": true
