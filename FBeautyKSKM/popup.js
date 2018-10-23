@@ -30,7 +30,7 @@ colorBoxBackground.onchange = function(){
 
 function resetColorBox(){
 	var reset;
-	if(localStorage["BackgroundImage"] == null || localStorage["BackgroundImage"] == ''){
+	if(localStorage["BackgroundColor"] == null || localStorage["BackgroundColor"] == ''){
 		reset = 'if(document.getElementById("content")!=null)document.getElementById("content").firstChild.firstChild.style.backgroundColor = "";'+
 				'if(document.getElementById("contentCol")!=null)document.getElementById("contentCol").style.backgroundColor = "";'+
 				'if(document.getElementById("pagelet_timeline_recent")!=null)document.getElementById("pagelet_timeline_recent").style.backgroundColor = "";';
@@ -110,15 +110,17 @@ blueBarBoxBackground.onchange = function(){
 	chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
 		chrome.tabs.executeScript(
 			tabs[0].id,
-			{code: 	'document.getElementById("bluebarRoot").firstChild.style.backgroundColor = "' + localStorage["BarColor"] + '";'+
-					'document.getElementById("bluebarRoot").firstChild.style.border = "1px solid ' + localStorage["BarColor"] + '";'
+			{code: 	'if(document.getElementById("bluebarRoot") != null){'+
+					'document.getElementById("bluebarRoot").firstChild.style.backgroundColor = "' + localStorage["BarColor"] + '";'+
+					'document.getElementById("bluebarRoot").firstChild.style.border = "1px solid ' + localStorage["BarColor"] + '";}'
 					});
 	});
 }
 
 function resetBlueBarBox(){
-	var reset = 'document.getElementById("bluebarRoot").firstChild.style.backgroundColor = "";'+
-				'document.getElementById("bluebarRoot").firstChild.style.border = "";';
+	var reset = 'if(document.getElementById("bluebarRoot") != null){'+
+				'document.getElementById("bluebarRoot").firstChild.style.backgroundColor = "";'+
+				'document.getElementById("bluebarRoot").firstChild.style.border = "";}';
 	chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
 		chrome.tabs.executeScript(
 			tabs[0].id,
@@ -127,6 +129,19 @@ function resetBlueBarBox(){
 	blueBarBoxBackground.value = '';
 	localStorage["BarColor"] = '';
 }
+
+// aColor.onchange = function(){
+// 	console.log("aColor");
+// 	localStorage["aColor"] = aColor.value;
+	
+// 	chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
+// 		chrome.tabs.executeScript(
+// 			tabs[0].id,
+// 			{code: 	'var elems = document.getElementsByTagName("a");'+
+// 					'for (var i = 0; i < elems.length; i++) {elems[i].style.color = "' + localStorage["aColor"] + '";}'
+// 					});
+// 	});
+// }
 
 function resetClearAll(){
 	resetColorBox();
